@@ -4,63 +4,66 @@ using UnityEngine;
 
 public class AudioAnalyser : MonoBehaviour {
 
+    const int FREQUENCY_BANDS = 1024;
     float[] frequencyBandAmplitudes;
-    float highestFrequency, frequencyBandRange, minHertz, maxHertz;
-    List<GameObject> gameObjects;
-    public GameObject cube;
+    float highestFrequency, frequencyBandRange, frequencyRangeMin, frequencyRangeMax;
     public float averageAmplitude;
-    int elapsedTime = 0;
-    Clock clock;
+    bool beatDetected;
 
     // Use this for initialization
     void Start()
     {
-        clock = GetComponent<Clock>();
-        frequencyBandAmplitudes = new float[1024];
+        frequencyBandAmplitudes = new float[FREQUENCY_BANDS];
         highestFrequency = AudioSettings.outputSampleRate / 2;
         frequencyBandRange = highestFrequency / frequencyBandAmplitudes.Length;
-        minHertz = 60f;
-        maxHertz = 250f;
-
-        gameObjects = new List<GameObject>();
+        frequencyRangeMin = 60f;
+        frequencyRangeMax = 250f;
+        beatDetected = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        AnalyseAudio();
+    }
+
+    void AnalyseAudio()
+    {
+        // Perform FFT analysis on the current window of playing audio on the AudioSource
         GetComponent<AudioSource>().GetSpectrumData(frequencyBandAmplitudes, 0, FFTWindow.BlackmanHarris);
 
-        float currentFrequency = 0f;
-        float amplitude = 0f;
-        float threshold = .07f;
+        DetectBeat();
+    }
+
+    void DetectBeat()
+    {
+        float currentFrequency = 0f, amplitude = 0f, threshold = .07f;
         int numAmplitudes = 0;
 
-        for (int i = 0; i < frequencyBandAmplitudes.Length; ++i)
+        beatDetected = false;
+
+        for(int i = 0; i < frequencyBandAmplitudes.Length; ++i)
         {
-            if (currentFrequency >= minHertz && currentFrequency <= maxHertz)
+            // if current frequency is within given frequency range
+            if(currentFrequency >= frequencyRangeMin && currentFrequency <= frequencyRangeMax)
             {
-                amplitude += frequencyBandAmplitudes[i];
+                amplitude += frequencyBandAmplitudes[i]; // accumulate amplitudes across the range of frequency bands
                 ++numAmplitudes;
             }
 
-            currentFrequency += frequencyBandRange;
+            currentFrequency += frequencyBandRange; // accumulate total frequency so far
         }
 
-        averageAmplitude = amplitude / numAmplitudes;
+        averageAmplitude = amplitude / numAmplitudes; // get average amplitude of frequency range 
 
-        if (averageAmplitude > threshold)
+        if(averageAmplitude > threshold)
         {
-            gameObjects.Add(GameObject.Instantiate<GameObject>(cube, new Vector3(Random.Range(-20, 20), Random.Range(-10, 10), 20), Quaternion.identity));
+            beatDetected = true;
         }
+    }
 
-        if (clock.GetElapsedTime() > 960)
-        {
-            clock.ResetTime();
-
-            foreach (GameObject gameObject in gameObjects)
-            {
-                Destroy(gameObject);
-            }
-        }
+    public bool BeatDetected()
+    {
+        return beatDetected;
     }
 }
