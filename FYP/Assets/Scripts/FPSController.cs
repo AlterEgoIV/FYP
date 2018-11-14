@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour {
 
-    public GameObject camera;
     public float speed;
 
 	// Use this for initialization
@@ -16,28 +15,25 @@ public class FPSController : MonoBehaviour {
 	void Update () {
         //Camera camera = GetComponent<Camera>();
 
-        //transform.forward = camera.transform.forward;
-
-        /*
         if(Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(transform.forward * speed * Time.deltaTime);
         }
-        */
 
-        //transform.rotation = camera.transform.rotation;
-
-        /*
         if(Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(-Vector3.right * speed * Time.deltaTime);
+            transform.Translate(-transform.right * speed * Time.deltaTime);
         }
 
         if(Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(transform.right * speed * Time.deltaTime);
         }
-        */
+
+        if(Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(-transform.forward * speed * Time.deltaTime);
+        }
 
         /*
 		if(OVRInput.GetDown(OVRInput.Button.Any))
