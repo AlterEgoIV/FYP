@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0edbc4c8d97b94792c6e94f83fe525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cube: {fileID: 1168502345780090, guid: 30cac964657adcc46bdd99309ba2a0ff, type: 2}
 --- !u!114 &689376293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac253f68c3e4a0409b10752178575af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1168502345780090, guid: 30cac964657adcc46bdd99309ba2a0ff, type: 2}
   averageAmplitude: 0
 --- !u!82 &689376294
 AudioSource:
@@ -524,7 +524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1101584966
 MonoBehaviour:
   m_ObjectHideFlags: 0

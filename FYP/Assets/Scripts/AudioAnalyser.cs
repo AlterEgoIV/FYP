@@ -62,6 +62,11 @@ public class AudioAnalyser : MonoBehaviour {
         }
     }
 
+    public float[] GetFrequencyBandAmplitudes()
+    {
+        return frequencyBandAmplitudes;
+    }
+
     public bool BeatDetected()
     {
         return beatDetected;
