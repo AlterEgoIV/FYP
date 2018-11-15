@@ -5,10 +5,10 @@ using UnityEngine;
 public class AudioAnalyser : MonoBehaviour {
 
     const int FREQUENCY_BANDS = 1024;
-    float[] frequencyBandAmplitudes;
+    public float[] frequencyBandAmplitudes;
     float highestFrequency, frequencyBandRange, frequencyRangeMin, frequencyRangeMax;
     public float averageAmplitude;
-    bool beatDetected;
+    public bool beatDetected;
 
     // Use this for initialization
     void Start()
@@ -60,15 +60,5 @@ public class AudioAnalyser : MonoBehaviour {
         {
             beatDetected = true;
         }
-    }
-
-    public float[] GetFrequencyBandAmplitudes()
-    {
-        return frequencyBandAmplitudes;
-    }
-
-    public bool BeatDetected()
-    {
-        return beatDetected;
     }
 }

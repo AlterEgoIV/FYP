@@ -22,9 +22,4 @@ public class Clock : MonoBehaviour
     {
         elapsedTime = 0f;
     }
-
-    public float GetElapsedTime()
-    {
-        return elapsedTime;
-    }
 }

@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(clock.GetElapsedTime() > 360f)
+        if(clock.elapsedTime > 360f)
         {
             clock.ResetTime();
 
