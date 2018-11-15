@@ -24,7 +24,10 @@ public class AudioVisualiser : MonoBehaviour {
 
         for(int i = 0; i < frequencyBandAmplitudes.Length; ++i)
         {
-            gameObjects.Add(GameObject.Instantiate<GameObject>(cube, new Vector3((i - 30) * .6f, 0, 30), Quaternion.identity));
+            GameObject go = GameObject.Instantiate<GameObject>(cube, new Vector3((i - 30) * .6f, 0, 30), Quaternion.identity);
+            go.GetComponent<Renderer>().material.color =
+                Color.HSVToRGB(i*3 / (float)frequencyBandAmplitudes.Length, 1, 1);
+            gameObjects.Add(go);
         }
     }
 	

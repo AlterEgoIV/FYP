@@ -35,11 +35,11 @@ public class FPSController : MonoBehaviour {
             transform.Translate(-transform.forward * speed * Time.deltaTime);
         }
 
-        /*
+        
 		if(OVRInput.GetDown(OVRInput.Button.Any))
         {
             Debug.Log("Trigger Pressed");
         }
-        */
+        
     }
 }
