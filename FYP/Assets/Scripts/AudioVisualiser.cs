@@ -20,7 +20,7 @@ public class AudioVisualiser : MonoBehaviour {
         gameObjects = new List<GameObject>();
         beats = new List<GameObject>();
 
-        frequencyBandAmplitudes = audioAnalyser.frequencyBandAmplitudes;
+        frequencyBandAmplitudes = audioAnalyser.curSpectrum;
 
         for(int i = 0; i < frequencyBandAmplitudes.Length; ++i)
         {
@@ -33,7 +33,7 @@ public class AudioVisualiser : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        frequencyBandAmplitudes = audioAnalyser.frequencyBandAmplitudes;
+        frequencyBandAmplitudes = audioAnalyser.curSpectrum;
 
         for(int i = 0; i < frequencyBandAmplitudes.Length; ++i)
         {
