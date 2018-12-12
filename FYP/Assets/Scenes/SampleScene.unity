@@ -565,6 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1263812153789822, guid: fe64ef615d03b084395cb2cbf0acd645,
     type: 2}
+  button: 2097152
 --- !u!1 &819928872
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1263812153789822, guid: fe64ef615d03b084395cb2cbf0acd645,
     type: 2}
+  button: 8192
 --- !u!1 &1101584965
 GameObject:
   m_ObjectHideFlags: 0

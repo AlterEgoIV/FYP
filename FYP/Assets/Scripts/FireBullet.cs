@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireBullet : MonoBehaviour {
 
     public GameObject bulletPrefab;
+    public OVRInput.Button button;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,7 @@ public class FireBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(OVRInput.Get(OVRInput.Button.Any))
+		if(OVRInput.Get(button))
         {
             GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
         }
