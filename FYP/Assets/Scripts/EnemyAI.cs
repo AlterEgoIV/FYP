@@ -24,4 +24,9 @@ public class EnemyAI : MonoBehaviour {
 
         //transform.Translate(velocity * Time.deltaTime);
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        transform.Translate(0, 0, 10 * Time.deltaTime);
+    }
 }

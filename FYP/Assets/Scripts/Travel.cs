@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Travel : MonoBehaviour {
 
-    float speed = 10f;
+    float speed = 20f;
 
 	// Use this for initialization
 	void Start () {
@@ -15,4 +15,10 @@ public class Travel : MonoBehaviour {
 	void Update () {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Bullet collision");
+        Destroy(gameObject);
+    }
 }
