@@ -22,6 +22,6 @@ public class EnemyAI : MonoBehaviour {
             velocity.x *= -1;
         }
 
-        transform.Translate(velocity * Time.deltaTime);
+        //transform.Translate(velocity * Time.deltaTime);
 	}
 }

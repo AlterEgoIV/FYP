@@ -44,7 +44,7 @@ public class AudioAnalyser : MonoBehaviour {
         spectrum.CopyTo(curSpectrum, 0);
     }
 
-    void DetectBeat()
+    /*void DetectBeat()
     {
         float changeInAmplitude = 0f;
         beatDetected = false;
@@ -56,9 +56,8 @@ public class AudioAnalyser : MonoBehaviour {
                 changeInAmplitude += curSpectrum[i] - prevSpectrum[i];
             }
         }
-    }
+    }*/
 
-    /*
     void DetectBeat()
     {
         float currentFrequency = 0f, amplitude = 0f, threshold = .07f;
@@ -85,5 +84,4 @@ public class AudioAnalyser : MonoBehaviour {
             beatDetected = true;
         }
     }
-    */
 }
