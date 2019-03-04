@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\EnemySpawner.cs" />
     <Compile Include="Assets\Health.cs" />
+    <Compile Include="Assets\Hover.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scenes\Scripts\TestScript.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\AmbienceEmitter.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\AudioManager.cs" />
