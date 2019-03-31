@@ -18,6 +18,14 @@ public class Travel : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            //Health health = collision.gameObject.GetComponent<Health>();
+            //health.health -= 50;
+
+            //collision.gameObject.GetComponent<Health>().health -= 50;
+        }
+
         Debug.Log("Bullet collision");
         Destroy(gameObject);
     }
