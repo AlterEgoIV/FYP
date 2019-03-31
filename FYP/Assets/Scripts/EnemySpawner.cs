@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour {
 
                 if (enemies.Count < maxEnemies)
                 {
-                    enemies.Add(GameObject.Instantiate<GameObject>(enemyPrefab, new Vector3(Random.Range(-7f, 7f), Random.Range(2f, 5f), 10f), Quaternion.identity));
+                    enemies.Add(GameObject.Instantiate<GameObject>(enemyPrefab, new Vector3(Random.Range(-7f, 7f), Random.Range(2f, 5f), 7f), Quaternion.identity));
                 }
             }
         }
