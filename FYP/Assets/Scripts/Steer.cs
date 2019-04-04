@@ -9,6 +9,7 @@ public class Steer : MonoBehaviour
     Vector3 newPosition, offset;
     float minX, minY, minZ, maxX, maxY, maxZ;
     bool isMoving, isWaiting, isReadyToMove, isAtNewPosition;
+    Vector3 velocity;
 
     // Start is called before the first frame update
     void Start()
