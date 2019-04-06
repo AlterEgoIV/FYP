@@ -5,19 +5,21 @@ using UnityEngine;
 public class Steer : MonoBehaviour
 {
     public GameObject player;
-    float waitTime, elapsedTime, speed;
-    Vector3 newPosition, offset;
+    float waitTime, elapsedTime, speed, maxSteerForce, minDistance;
+    Vector3 target, offset;
     float minX, minY, minZ, maxX, maxY, maxZ;
-    bool isMoving, isWaiting, isReadyToMove, isAtNewPosition;
-    Vector3 velocity;
+    bool isMoving, isWaiting, isReadyToMove;
+    Vector3 acceleration, velocity;
 
     // Start is called before the first frame update
     void Start()
     {
         waitTime = 120f;
         elapsedTime = 0;
-        speed = 10f;
-        newPosition = new Vector3();
+        speed = 3f;
+        maxSteerForce = .08f;
+        minDistance = 3f;
+        target = new Vector3();
         offset = new Vector3(0, 5, 10);
         minX = -10;
         minY = -3;
@@ -28,37 +30,118 @@ public class Steer : MonoBehaviour
         isMoving = false;
         isWaiting = false;
         isReadyToMove = true;
-        //isAtNewPosition = false;
+
+        acceleration = new Vector3();
+        velocity = new Vector3();
+        //steeringForce = new Vector3();
+
+        SetTarget();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isReadyToMove)
+        if(elapsedTime == waitTime)
         {
-            newPosition.Set(player.transform.position.x + offset.x + Random.Range(minX, maxX),
-            player.transform.position.y + offset.y + Random.Range(minY, maxY),
-            player.transform.position.z + offset.z + Random.Range(minZ, maxZ));
+            SetTarget();
+            //target.Set(player.transform.position.x + offset.x + Random.Range(minX, maxX),
+            //           player.transform.position.y + offset.y + Random.Range(minY, maxY),
+            //           player.transform.position.z + offset.z + Random.Range(minZ, maxZ));
+
+            //if(Vector3.Distance(transform.position, target) < minDistance)
+            //{
+            //    Vector3 direction = target - transform.position;
+            //    direction.Normalize();
+            //    direction *= minDistance;
+            //    target = transform.position + direction;
+            //}
+
+            elapsedTime = 0;
+        }
+
+        SeekTarget();
+        Move();
+
+        ++elapsedTime;
+    }
+
+    void SetTarget()
+    {
+        target.Set(player.transform.position.x + offset.x + Random.Range(minX, maxX),
+                       player.transform.position.y + offset.y + Random.Range(minY, maxY),
+                       player.transform.position.z + offset.z + Random.Range(minZ, maxZ));
+
+        //if (Vector3.Distance(transform.position, target) < minDistance)
+        //{
+        //    Vector3 direction = target - transform.position;
+        //    direction.Normalize();
+        //    direction *= minDistance;
+        //    target = transform.position + direction;
+        //}
+    }
+
+    void SeekTarget()
+    {
+        Vector3 desiredVelocity = target - transform.position;
+        desiredVelocity.Normalize();
+        desiredVelocity *= speed;
+
+        Vector3 steeringForce = desiredVelocity - velocity;
+        steeringForce.Normalize();
+        steeringForce *= maxSteerForce;
+
+        acceleration += steeringForce;
+    }
+
+    void Move()
+    {
+        velocity += acceleration;
+        velocity.Normalize();
+        velocity *= speed;
+        transform.Translate(velocity * Time.deltaTime);
+        acceleration.Set(0, 0, 0);
+    }
+
+    void blah()
+    {
+        if (isReadyToMove)
+        {
+            target.Set(player.transform.position.x + offset.x + Random.Range(minX, maxX),
+                       player.transform.position.y + offset.y + Random.Range(minY, maxY),
+                       player.transform.position.z + offset.z + Random.Range(minZ, maxZ));
 
             isReadyToMove = false;
             isMoving = true;
         }
 
-        if(isMoving)
+        if (isMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, newPosition, Time.deltaTime * speed);
+            //Seek();
+
+            velocity += acceleration;
+            velocity.Normalize();
+            velocity *= speed;
+
+            //if (velocity.x > speed) velocity.x = speed;
+            //if (velocity.y > speed) velocity.y = speed;
+            //if (velocity.z > speed) velocity.z = speed;
+
+            //transform.position += velocity;
+            transform.Translate(velocity);
+            acceleration.Set(0, 0, 0);
+            //transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
         }
 
-        if(Vector3.Equals(transform.position, newPosition) && isMoving)
+        if (Vector3.Equals(transform.position, target) && isMoving)
         {
             //isAtNewPosition = true;
             isMoving = false;
             isWaiting = true;
         }
-        
-        if(isWaiting)
+
+        if (isWaiting)
         {
-            if(elapsedTime == waitTime)
+            if (elapsedTime == waitTime)
             {
                 elapsedTime = 0;
                 isWaiting = false;
@@ -69,5 +152,7 @@ public class Steer : MonoBehaviour
                 ++elapsedTime;
             }
         }
+
+        //acceleration.Set(0, 0, 0);
     }
 }

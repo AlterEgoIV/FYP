@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
 
-    GameObject obj;
+    public GameObject obj;
     public int health;
     int maxHealth;
     //Material material;
@@ -15,7 +15,7 @@ public class Health : MonoBehaviour {
         //material = new Material(gameObject.GetComponent<Renderer>().material);
         //gameObject.GetComponent<Renderer>().material.color.a = .5f;
 
-        obj = transform.parent.gameObject;
+        //obj = transform.parent.gameObject;
         //obj = GameObject.FindGameObjectWithTag("Enemy");
         maxHealth = health;
         maxWidth = transform.localScale.x;
