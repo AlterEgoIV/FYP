@@ -5,15 +5,23 @@ using UnityEngine;
 public class Travel : MonoBehaviour {
 
     public float speed = 20f;
+    int elapsedTime;
 
 	// Use this for initialization
 	void Start () {
-		
+        elapsedTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+        if(elapsedTime >= 180)
+        {
+            Destroy(gameObject);
+        }
+
+        ++elapsedTime;
 	}
 
     void OnCollisionEnter(Collision collision)
