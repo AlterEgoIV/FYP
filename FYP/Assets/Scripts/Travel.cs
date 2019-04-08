@@ -28,6 +28,11 @@ public class Travel : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            Destroy(collision.gameObject);
+
+            //Health[] health = collision.gameObject.GetComponentsInChildren<Health>();
+            //health[0].health--;
+
             //Health health = collision.gameObject.GetComponent<Health>();
             //health.health -= 50;
 
