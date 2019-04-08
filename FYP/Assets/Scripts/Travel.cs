@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Travel : MonoBehaviour {
 
-    float speed = 20f;
+    public float speed = 20f;
 
 	// Use this for initialization
 	void Start () {

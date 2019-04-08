@@ -13,7 +13,7 @@ public class FireBullet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         canFire = true;
-        cooldownTime = isPlayer ? 15 : 60;
+        cooldownTime = isPlayer ? 5 : 60;
         timeLeftToFire = cooldownTime;
 	}
 	
@@ -27,6 +27,7 @@ public class FireBullet : MonoBehaviour {
                 {
                     canFire = false;
                     GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
+                    bullet.GetComponent<Travel>().speed = 100f;
                 }
             }
             else
