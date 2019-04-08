@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Steer : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     float waitTime, elapsedTime, speed, maxSteerForce, minDistance;
     Vector3 target, offset;
     float minX, minY, minZ, maxX, maxY, maxZ;
@@ -14,6 +14,8 @@ public class Steer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         waitTime = 120f;
         elapsedTime = 0;
         speed = 3f;
