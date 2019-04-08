@@ -6,13 +6,14 @@ public class FireBullet : MonoBehaviour {
 
     public GameObject bulletPrefab;
     public OVRInput.Button button;
+    public bool isPlayer;
     bool canFire;
     int cooldownTime, timeLeftToFire;
 
 	// Use this for initialization
 	void Start () {
         canFire = true;
-        cooldownTime = 15;
+        cooldownTime = isPlayer ? 15 : 60;
         timeLeftToFire = cooldownTime;
 	}
 	
@@ -20,10 +21,21 @@ public class FireBullet : MonoBehaviour {
 	void Update () {
         if(canFire)
         {
-            if (OVRInput.Get(button))
+            if(isPlayer)
+            {
+                if (OVRInput.Get(button))
+                {
+                    canFire = false;
+                    GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
+                }
+            }
+            else
             {
                 canFire = false;
+                GameObject target = GameObject.FindGameObjectWithTag("Player");
                 GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
+                bullet.transform.LookAt(target.transform);
+                bullet.transform.Translate(0, 0, 2);
             }
         }
 
