@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 773878820}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,7 +721,7 @@ MonoBehaviour:
   audioAnalyser: {fileID: 689376293}
   enemyPrefab: {fileID: 5403742872027753198, guid: 419e709c42f1ca14e9e36bf04bc40ad3,
     type: 3}
-  enemies: []
+  enemyCount: 0
 --- !u!4 &773878819
 Transform:
   m_ObjectHideFlags: 0
