@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireBullet : MonoBehaviour {
 
     public GameObject bulletPrefab;
+    GameObject analyser;
     public OVRInput.Button button;
     public bool isPlayer;
     bool canFire;
@@ -15,6 +16,7 @@ public class FireBullet : MonoBehaviour {
         canFire = true;
         cooldownTime = isPlayer ? 5 : 60;
         timeLeftToFire = cooldownTime;
+        analyser = GameObject.FindGameObjectWithTag("AudioAnalyser");
 	}
 	
 	// Update is called once per frame
@@ -32,11 +34,16 @@ public class FireBullet : MonoBehaviour {
             }
             else
             {
-                canFire = false;
-                GameObject target = GameObject.FindGameObjectWithTag("Player");
-                GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
-                bullet.transform.LookAt(target.transform);
-                bullet.transform.Translate(0, 0, 2);
+                if(analyser.GetComponent<AudioAnalyser>().beatDetected)
+                {
+                    GameObject target = GameObject.FindGameObjectWithTag("Player");
+                    GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
+                    bullet.transform.LookAt(target.transform);
+                    bullet.transform.Translate(0, 0, 2);
+                }
+
+                //canFire = false;
+                
             }
         }
 

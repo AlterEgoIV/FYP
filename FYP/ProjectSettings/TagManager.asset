@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - EnemyHealthbar
   - EnemySpawner
+  - AudioAnalyser
   layers:
   - Default
   - TransparentFX
