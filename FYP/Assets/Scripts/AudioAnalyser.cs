@@ -7,7 +7,7 @@ public class AudioAnalyser : MonoBehaviour {
     const int FREQUENCY_BANDS = 1024;
     public float[] spectrum, curSpectrum, prevSpectrum;
     float highestFrequency, frequencyBandRange, frequencyRangeMin, frequencyRangeMax;
-    public float averageAmplitude;
+    public float averageBassAmplitude;
     public bool beatDetected;
 
     // Use this for initialization
@@ -77,9 +77,9 @@ public class AudioAnalyser : MonoBehaviour {
             currentFrequency += frequencyBandRange; // accumulate total frequency so far
         }
 
-        averageAmplitude = amplitude / numAmplitudes; // get average amplitude of frequency range 
+        averageBassAmplitude = amplitude / numAmplitudes; // get average amplitude of frequency range 
 
-        if(averageAmplitude > threshold)
+        if(averageBassAmplitude > threshold)
         {
             beatDetected = true;
         }
