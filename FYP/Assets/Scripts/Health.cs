@@ -32,8 +32,16 @@ public class Health : MonoBehaviour {
 		if(health <= 0)
         {
             GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().enemyCount--;
-            Destroy(this.gameObject);
-            Destroy(obj);
+
+            if(this.gameObject != null)
+            {
+                Destroy(this.gameObject);
+            }
+            
+            if(gameObject != null)
+            {
+                Destroy(obj);
+            }
         }
 	}
 

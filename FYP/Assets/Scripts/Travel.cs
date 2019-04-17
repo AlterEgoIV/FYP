@@ -18,7 +18,10 @@ public class Travel : MonoBehaviour {
 
         if(elapsedTime >= 180)
         {
-            Destroy(gameObject);
+            if(gameObject != null)
+            {
+                Destroy(gameObject);
+            }
         }
 
         ++elapsedTime;
@@ -26,9 +29,12 @@ public class Travel : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.gameObject != null)
         {
-            other.gameObject.GetComponentInChildren<Health>().health -= 50;
+            if (other.gameObject.tag == "Enemy")
+            {
+                other.gameObject.GetComponentInChildren<Health>().health -= 50;
+            }
         }
     }
 
