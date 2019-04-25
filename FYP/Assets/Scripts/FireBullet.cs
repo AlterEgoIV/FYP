@@ -42,11 +42,7 @@ public class FireBullet : MonoBehaviour {
                     bullet.transform.LookAt(target.transform);
                     bullet.transform.Translate(0, 0, 2);
                     bullet.GetComponent<Travel>().speed = 5;
-                    //bullet.transform.localScale = new Vector3(analyser.averageBassAmplitude * 3, analyser.averageBassAmplitude * 3, analyser.averageBassAmplitude * 3);
                 }
-
-                //canFire = false;
-                
             }
         }
 

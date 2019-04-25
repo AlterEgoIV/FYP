@@ -6,8 +6,7 @@ public class Steer : MonoBehaviour
 {
     GameObject player;
     float waitTime, elapsedTime, speed, maxSteerForce, minDistance;
-    Vector3 target, offset;
-    float minX, minY, minZ, maxX, maxY, maxZ;
+    Vector3 target, offset, min, max;
     bool isMoving, isWaiting, isReadyToMove;
     Vector3 acceleration, velocity;
 
@@ -23,19 +22,14 @@ public class Steer : MonoBehaviour
         minDistance = 3f;
         target = new Vector3();
         offset = new Vector3(0, 5, 10);
-        minX = -10;
-        minY = -3;
-        minZ = -2;
-        maxX = 10;
-        maxY = 3;
-        maxZ = 2;
+        min = new Vector3(-10, -3, -2);
+        max = new Vector3(10, 3, 2);
         isMoving = false;
         isWaiting = false;
         isReadyToMove = true;
 
         acceleration = new Vector3();
         velocity = new Vector3();
-        //steeringForce = new Vector3();
 
         SetTarget();
     }
@@ -46,17 +40,6 @@ public class Steer : MonoBehaviour
         if(elapsedTime == waitTime)
         {
             SetTarget();
-            //target.Set(player.transform.position.x + offset.x + Random.Range(minX, maxX),
-            //           player.transform.position.y + offset.y + Random.Range(minY, maxY),
-            //           player.transform.position.z + offset.z + Random.Range(minZ, maxZ));
-
-            //if(Vector3.Distance(transform.position, target) < minDistance)
-            //{
-            //    Vector3 direction = target - transform.position;
-            //    direction.Normalize();
-            //    direction *= minDistance;
-            //    target = transform.position + direction;
-            //}
 
             elapsedTime = 0;
         }
@@ -69,17 +52,9 @@ public class Steer : MonoBehaviour
 
     void SetTarget()
     {
-        target.Set(player.transform.position.x + offset.x + Random.Range(minX, maxX),
-                       player.transform.position.y + offset.y + Random.Range(minY, maxY),
-                       player.transform.position.z + offset.z + Random.Range(minZ, maxZ));
-
-        //if (Vector3.Distance(transform.position, target) < minDistance)
-        //{
-        //    Vector3 direction = target - transform.position;
-        //    direction.Normalize();
-        //    direction *= minDistance;
-        //    target = transform.position + direction;
-        //}
+        target.Set(player.transform.position.x + offset.x + Random.Range(min.x, max.x),
+                       player.transform.position.y + offset.y + Random.Range(min.y, max.y),
+                       player.transform.position.z + offset.z + Random.Range(min.z, max.z));
     }
 
     void SeekTarget()
@@ -102,59 +77,5 @@ public class Steer : MonoBehaviour
         velocity *= speed;
         transform.Translate(velocity * Time.deltaTime);
         acceleration.Set(0, 0, 0);
-    }
-
-    void blah()
-    {
-        if (isReadyToMove)
-        {
-            target.Set(player.transform.position.x + offset.x + Random.Range(minX, maxX),
-                       player.transform.position.y + offset.y + Random.Range(minY, maxY),
-                       player.transform.position.z + offset.z + Random.Range(minZ, maxZ));
-
-            isReadyToMove = false;
-            isMoving = true;
-        }
-
-        if (isMoving)
-        {
-            //Seek();
-
-            velocity += acceleration;
-            velocity.Normalize();
-            velocity *= speed;
-
-            //if (velocity.x > speed) velocity.x = speed;
-            //if (velocity.y > speed) velocity.y = speed;
-            //if (velocity.z > speed) velocity.z = speed;
-
-            //transform.position += velocity;
-            transform.Translate(velocity);
-            acceleration.Set(0, 0, 0);
-            //transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
-        }
-
-        if (Vector3.Equals(transform.position, target) && isMoving)
-        {
-            //isAtNewPosition = true;
-            isMoving = false;
-            isWaiting = true;
-        }
-
-        if (isWaiting)
-        {
-            if (elapsedTime == waitTime)
-            {
-                elapsedTime = 0;
-                isWaiting = false;
-                isReadyToMove = true;
-            }
-            else
-            {
-                ++elapsedTime;
-            }
-        }
-
-        //acceleration.Set(0, 0, 0);
     }
 }

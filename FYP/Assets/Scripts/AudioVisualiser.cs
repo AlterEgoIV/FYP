@@ -20,20 +20,19 @@ public class AudioVisualiser : MonoBehaviour {
         gameObjects = new List<GameObject>();
         beats = new List<GameObject>();
 
-        frequencyBandAmplitudes = audioAnalyser.curSpectrum;
+        frequencyBandAmplitudes = audioAnalyser.spectrum;
 
         for(int i = 0; i < frequencyBandAmplitudes.Length; ++i)
         {
             GameObject go = GameObject.Instantiate<GameObject>(cube, new Vector3((i - 30) * .6f, 0, 30), Quaternion.identity);
-            go.GetComponent<Renderer>().material.color =
-                Color.HSVToRGB(i*3 / (float)frequencyBandAmplitudes.Length, 1, 1);
+            go.GetComponent<Renderer>().material.color = Color.HSVToRGB(i * 4 / (float)frequencyBandAmplitudes.Length, 1, 1);
             gameObjects.Add(go);
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-        frequencyBandAmplitudes = audioAnalyser.curSpectrum;
+        frequencyBandAmplitudes = audioAnalyser.spectrum;
 
         for(int i = 0; i < frequencyBandAmplitudes.Length; ++i)
         {

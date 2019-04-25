@@ -41,23 +41,4 @@ public class Travel : MonoBehaviour {
             }
         }
     }
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.tag == "Enemy")
-    //    {
-    //        Destroy(collision.gameObject);
-
-    //        //Health[] health = collision.gameObject.GetComponentsInChildren<Health>();
-    //        //health[0].health--;
-
-    //        //Health health = collision.gameObject.GetComponent<Health>();
-    //        //health.health -= 50;
-
-    //        //collision.gameObject.GetComponent<Health>().health -= 50;
-    //    }
-
-    //    Debug.Log("Bullet collision");
-    //    Destroy(gameObject);
-    //}
 }

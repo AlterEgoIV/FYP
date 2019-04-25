@@ -22,8 +22,6 @@ public class CheckCollisions : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            //GetComponent<Health>().health -= 50;
-            //GetComponentInChildren<Health>().health -= 50;
             healthbar.GetComponent<Health>().health -= 50;
         }
     }

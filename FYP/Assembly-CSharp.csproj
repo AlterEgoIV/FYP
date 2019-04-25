@@ -305,12 +305,9 @@
     <Compile Include="Assets\Scripts\ChangeColour.cs" />
     <Compile Include="Assets\Scripts\CheckCollisions.cs" />
     <Compile Include="Assets\Scripts\Clock.cs" />
-    <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\FireBullet.cs" />
-    <Compile Include="Assets\Scripts\FPSController.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
-    <Compile Include="Assets\Scripts\Hover.cs" />
     <Compile Include="Assets\Scripts\Steer.cs" />
     <Compile Include="Assets\Scripts\Travel.cs" />
     <None Include="Assets\Oculus\Avatar\Content\Materials\AvatarMaterialStateShader.cginc" />
