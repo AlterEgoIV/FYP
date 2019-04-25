@@ -12,8 +12,6 @@ public class ChangeColour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //cycleColours = false;
-        //cycleSpeed = 0f;
         colour = 0f;
         counter = 0;
     }
