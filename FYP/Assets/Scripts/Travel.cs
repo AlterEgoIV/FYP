@@ -6,6 +6,7 @@ public class Travel : MonoBehaviour {
 
     AudioAnalyser analyser;
     public float speed = 10f;
+    public bool isPlayerBullet;
     int elapsedTime;
 
 	// Use this for initialization
@@ -35,7 +36,7 @@ public class Travel : MonoBehaviour {
     {
         if(other.gameObject != null)
         {
-            if (other.gameObject.tag == "Enemy")
+            if (isPlayerBullet && other.gameObject.tag == "Enemy")
             {
                 other.gameObject.GetComponentInChildren<Health>().health -= 50;
             }

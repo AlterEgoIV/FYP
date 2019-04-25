@@ -36,6 +36,7 @@ public class FireBullet : MonoBehaviour {
                     canFire = false;
                     GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
                     bullet.GetComponent<Travel>().speed = 30f;
+                    bullet.GetComponent<Travel>().isPlayerBullet = true;
                 }
             }
             else
@@ -46,6 +47,7 @@ public class FireBullet : MonoBehaviour {
                     bullet.transform.LookAt(targetPosition);
                     bullet.transform.Translate(0, 0, 2);
                     bullet.GetComponent<Travel>().speed = 5;
+                    bullet.GetComponent<Travel>().isPlayerBullet = false;
                 }
             }
         }
