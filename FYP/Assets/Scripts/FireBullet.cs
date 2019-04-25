@@ -18,6 +18,7 @@ public class FireBullet : MonoBehaviour {
         timeLeftToFire = cooldownTime;
         GameObject audioAnalyser = GameObject.FindGameObjectWithTag("AudioAnalyser");
         analyser = audioAnalyser.GetComponent<AudioAnalyser>();
+        
 	}
 	
 	// Update is called once per frame
@@ -39,7 +40,8 @@ public class FireBullet : MonoBehaviour {
                 {
                     GameObject target = GameObject.FindGameObjectWithTag("Player");
                     GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
-                    bullet.transform.LookAt(target.transform);
+                    //Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + 1f, target.transform.position.z);
+                    bullet.transform.LookAt(target.transform.position);
                     bullet.transform.Translate(0, 0, 2);
                     bullet.GetComponent<Travel>().speed = 5;
                 }

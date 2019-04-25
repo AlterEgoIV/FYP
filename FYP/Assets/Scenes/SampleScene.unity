@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 121649596}
   - component: {fileID: 121649595}
   - component: {fileID: 121649594}
+  - component: {fileID: 121649598}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -210,6 +211,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121649598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121649593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2062d5f36bb896342910d24d70a8cb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeMin: -10
+  rangeMax: 10
+  cycleSpeed: 0.01
+  cycleColours: 1
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +403,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeMin: -2
   rangeMax: 2
+  cycleSpeed: 0
+  cycleColours: 0
 --- !u!1 &615474392
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,9 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spectrum: []
-  curSpectrum: []
-  prevSpectrum: []
-  averageAmplitude: 0
+  averageBassAmplitude: 0
   beatDetected: 0
 --- !u!82 &689376294
 AudioSource:
@@ -1021,6 +1038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeMin: -2
   rangeMax: 2
+  cycleSpeed: 0
+  cycleColours: 0
 --- !u!1 &1693135290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,7 +1049,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1693135291}
-  - component: {fileID: 1693135292}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1053,19 +1071,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1693135292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693135290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600aa4a6d7312fc4b94034990b95187c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
 --- !u!1 &1767405756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,6 +1179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeMin: -2
   rangeMax: 2
+  cycleSpeed: 0
+  cycleColours: 0
 --- !u!1 &1928345038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,3 +1289,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeMin: -2
   rangeMax: 2
+  cycleSpeed: 0
+  cycleColours: 0
