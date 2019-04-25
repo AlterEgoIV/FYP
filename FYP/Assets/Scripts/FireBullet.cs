@@ -5,6 +5,8 @@ using UnityEngine;
 public class FireBullet : MonoBehaviour {
 
     public GameObject bulletPrefab;
+    GameObject target;
+    Vector3 targetPosition;
     AudioAnalyser analyser;
     public OVRInput.Button button;
     public bool isPlayer;
@@ -18,8 +20,10 @@ public class FireBullet : MonoBehaviour {
         timeLeftToFire = cooldownTime;
         GameObject audioAnalyser = GameObject.FindGameObjectWithTag("AudioAnalyser");
         analyser = audioAnalyser.GetComponent<AudioAnalyser>();
-        
-	}
+        target = GameObject.FindGameObjectWithTag("Player");
+        targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + 1f, target.transform.position.z);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,10 +42,8 @@ public class FireBullet : MonoBehaviour {
             {
                 if(analyser.beatDetected)
                 {
-                    GameObject target = GameObject.FindGameObjectWithTag("Player");
                     GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab, transform.position, transform.rotation);
-                    //Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + 1f, target.transform.position.z);
-                    bullet.transform.LookAt(target.transform.position);
+                    bullet.transform.LookAt(targetPosition);
                     bullet.transform.Translate(0, 0, 2);
                     bullet.GetComponent<Travel>().speed = 5;
                 }
